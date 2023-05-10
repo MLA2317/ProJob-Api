@@ -1,0 +1,6 @@
+CASCADE - profil udalit qilganda bu  yozilgan kamentlarni ozi bn udalit bolib ketadi
+PROTECT = profil udalit qilganda barcha yozilganlarni message  va boshqa udalit qildirtirib keyin udalit boladi profil
+SET_NULL = profil udalit qilganda profil udalit boladi ammo messaglari qoladi yani unknown bolib qoladi messagelari
+
+null=true - bazi dalmiyga bosh saqlashi mumkin
+blank=true - formani bosh jonatishi mumkin
