@@ -142,9 +142,9 @@ class ApplyJobSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         request = self.context['request']
-        author = request.user
+        author_id = request.user.id
         instance = super().create(validated_data)
-        instance.author = author
+        instance.author.id = author_id
         return instance
 
 
