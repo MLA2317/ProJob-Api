@@ -1,14 +1,14 @@
 from rest_framework import serializers
 from rest_framework.exceptions import ValidationError
 
-from .models import Comment, Blog, Body
+from .models import Comment, Blog, Body, ImageBody
 from account.serializer import MyProfileSerializer
 
 
 class MiniBodySerializer(serializers.ModelSerializer):
     class Meta:
         model = Body
-        fields = ('id', 'body', 'is_script')
+        fields = ('id', 'body')
 
 
 class BlogDetailSerializer(serializers.ModelSerializer):
@@ -17,7 +17,7 @@ class BlogDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Blog
-        fields = ['id', 'author', 'title', 'image', 'description', 'created_date']
+        fields = ['id', 'author', 'title', 'image', 'post_body', 'created_date']
 
 
 class BlogPostSerializer(serializers.ModelSerializer):
@@ -51,7 +51,15 @@ class BlogPostSerializer(serializers.ModelSerializer):
 class BodySerializer(serializers.ModelSerializer):
     class Meta:
         model = Body
-        fields = ['id', 'post', 'body', 'blog_image', 'is_script']
+        fields = ['id', 'post', 'body']
+
+
+class ImageBodySerializer(serializers.ModelSerializer):
+    body = BodySerializer(many=True, read_only=True)
+
+    class Meta:
+        model = ImageBody
+        fields = ('id', 'body', 'blog_image', 'is_scripts')
 
 
 class MiniCommentSerializer(serializers.ModelSerializer):

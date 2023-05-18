@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import EmailView
+from .views import EmailSendAPI
 
 urlpatterns = [
-    path('send-email/', EmailView.as_view()),
+    path('send-email/', EmailSendAPI.as_view()),
 ]
